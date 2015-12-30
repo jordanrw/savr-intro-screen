@@ -34,6 +34,11 @@
 
 
 @property (nonatomic, strong) SavrLabel *page3Label;
+@property (nonatomic, strong) UIImageView *fries;
+@property (nonatomic, strong) UIImageView *pizza;
+@property (nonatomic, strong) UIImageView *ticket;
+
+
 @property (nonatomic, strong) UIImageView *plane;
 @property (nonatomic, strong) CAShapeLayer *planePathLayer;
 @property (nonatomic, strong) UIView *planePathView;
