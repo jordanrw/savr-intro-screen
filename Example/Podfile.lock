@@ -1,0 +1,23 @@
+PODS:
+  - Expecta (1.0.3)
+  - JazzHands (2.0.7)
+  - Masonry (0.6.3)
+  - Specta (1.0.4)
+
+DEPENDENCIES:
+  - Expecta
+  - JazzHands (from `../JazzHands.podspec`)
+  - Masonry
+  - Specta
+
+EXTERNAL SOURCES:
+  JazzHands:
+    :path: ../JazzHands.podspec
+
+SPEC CHECKSUMS:
+  Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
+  JazzHands: 13b2930840957cdbb830e1d52434fc2342b050d8
+  Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
+  Specta: 69bb134672aae190a1379ff91df07dad8dd1f869
+
+COCOAPODS: 0.38.2

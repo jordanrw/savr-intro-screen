@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "EB68D22A18A7E7C1FB4FC3B3A7CFE47A21CD8D40",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "29EC5B8018A49A92A6FC1DFEC5A9D5A76030265D" : 0,
+    "EB68D22A18A7E7C1FB4FC3B3A7CFE47A21CD8D40" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "100E20E1-EC30-43F7-8887-A6D2A8FF2E1E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "29EC5B8018A49A92A6FC1DFEC5A9D5A76030265D" : "JazzHands",
+    "EB68D22A18A7E7C1FB4FC3B3A7CFE47A21CD8D40" : "Savr%20Intro%20Screen\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "JazzHandsDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Example\/JazzHandsDemo.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:IFTTT\/JazzHands.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "29EC5B8018A49A92A6FC1DFEC5A9D5A76030265D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jordanrw\/Savr-Intro-Screen.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EB68D22A18A7E7C1FB4FC3B3A7CFE47A21CD8D40"
+    }
+  ]
+}
