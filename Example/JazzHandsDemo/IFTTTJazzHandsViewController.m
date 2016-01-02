@@ -676,15 +676,23 @@
     [self.bag mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.circle).multipliedBy(0.6);
         make.height.equalTo(self.circle).multipliedBy(0.5);
-        
-        make.centerY.equalTo(self.contentView).multipliedBy(0.6);
-        
     }];
     
-    [self keepView:self.bag onPages:@[@(4), @(4), @(4)] atTimes:@[@(3), @(4), @(5)]];
+    [self keepView:self.bag onPages:@[@(3),@(3.4), @(4), @(4)] atTimes:@[@(3), @(3.4), @(4), @(5)]];
 
     
+    NSLayoutConstraint *bagVerticalConstraint = [NSLayoutConstraint constraintWithItem:self.bag
+                                                                                   attribute:NSLayoutAttributeCenterY
+                                                                                   relatedBy:NSLayoutRelationEqual
+                                                                                      toItem:self.contentView
+                                                                                   attribute:NSLayoutAttributeTop
+                                                                                  multiplier:1.f constant:0.f];
+    [self.contentView addConstraint:bagVerticalConstraint];
     
+    IFTTTConstraintMultiplierAnimation *bagVerticalAnimation = [IFTTTConstraintMultiplierAnimation animationWithSuperview:self.contentView constraint:bagVerticalConstraint attribute:IFTTTLayoutAttributeHeight referenceView:self.contentView];
+    [bagVerticalAnimation addKeyframeForTime:3.4 multiplier:-0.3f];
+    [bagVerticalAnimation addKeyframeForTime:3.8 multiplier:0.4f];
+    [self.animator addAnimation:bagVerticalAnimation];
 }
 
 - (void)configureGlowAnimation {
