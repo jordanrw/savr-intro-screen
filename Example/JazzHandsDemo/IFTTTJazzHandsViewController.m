@@ -29,9 +29,6 @@
 @property (nonatomic, strong) UIImageView *cash2;
 @property (nonatomic, strong) UIImageView *cash1;
 
-@property (nonatomic, strong) UIImageView *musicStand;
-@property (nonatomic, strong) UIImageView *musicNotes;
-
 
 @property (nonatomic, strong) SavrLabel *page3Label;
 @property (nonatomic, strong) UIImageView *fries;
@@ -39,24 +36,29 @@
 @property (nonatomic, strong) UIImageView *ticket;
 
 
+@property (nonatomic, strong) SavrLabel *page4Label;
+@property (nonatomic, strong) UIImageView *iPhone;
+@property (nonatomic, strong) UIImageView *itemFries;
+@property (nonatomic, strong) UIImageView *itemPizza;
+@property (nonatomic, strong) UIImageView *itemTicket;
+
+
+@property (nonatomic, strong) SavrLabel *page5Label;
+
+
+
+@property (nonatomic, strong) IFTTTPathPositionAnimation *airplaneFlyingAnimation;
+@property (nonatomic, strong) UIImageView *musicStand;
+@property (nonatomic, strong) UIImageView *musicNotes;
 @property (nonatomic, strong) UIImageView *plane;
 @property (nonatomic, strong) CAShapeLayer *planePathLayer;
 @property (nonatomic, strong) UIView *planePathView;
 @property (nonatomic, strong) UIImageView *bigCloud;
 @property (nonatomic, strong) UIImageView *littleCloud;
-
-
-@property (nonatomic, strong) SavrLabel *page4Label;
 @property (nonatomic, strong) UIImageView *sun;
 @property (nonatomic, strong) UIImageView *iftttCloud;
-
-
-@property (nonatomic, strong) SavrLabel *page5Label;
 @property (nonatomic, strong) UIImageView *page2Text;
 @property (nonatomic, strong) UIImageView *page3Text;
-
-
-@property (nonatomic, strong) IFTTTPathPositionAnimation *airplaneFlyingAnimation;
 
 @property (assign) double SCREEN_WIDTH;
 @property (assign) double SCREEN_HEIGHT;
@@ -184,6 +186,8 @@
     self.page4Label.text = [NSString stringWithFormat:@"If you skipped out on those\npurchases and recorded them..."];
     [self.contentView addSubview:self.page4Label];
     
+    self.iPhone = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"iPhone"]];
+    [self.contentView addSubview:self.iPhone];
     
     
     //PAGE 5
@@ -205,11 +209,11 @@
 
     [self configureJunkItemsAnimations];
     
-    
 
+    [self configureiPhoneAnimations];
+    
+    
     [self animateCurrentFrame];
-    
-    
     [self configureCircleAnimations];
     
 //    [self configureCloudAnimations];
@@ -451,6 +455,8 @@
     
 }
 
+
+#pragma mark - Page 3 Animations
 - (void)configureJunkItemsAnimations {
     
     
@@ -519,7 +525,7 @@
     
     IFTTTConstraintMultiplierAnimation *pizzaVerticalAnimation = [IFTTTConstraintMultiplierAnimation animationWithSuperview:self.contentView constraint:pizzaVerticalConstraint attribute:IFTTTLayoutAttributeHeight referenceView:self.contentView];
     [pizzaVerticalAnimation addKeyframeForTime:2.0 multiplier:0.4f];
-    [pizzaVerticalAnimation addKeyframeForTime:3.0 multiplier:-0.3f];
+    [pizzaVerticalAnimation addKeyframeForTime:3.0 multiplier:-0.6f];
     [self.animator addAnimation:pizzaVerticalAnimation];
     
     
@@ -559,6 +565,31 @@
     [self.animator addAnimation:ticketVerticalAnimation];
 }
 
+
+#pragma mark - Page 4 Animations
+- (void)configureiPhoneAnimations {
+    [self.iPhone mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.circle).multipliedBy(0.5);
+        make.height.equalTo(self.circle).multipliedBy(0.916);
+        make.centerY.equalTo(self.contentView).multipliedBy(0.8);
+    }];
+    
+    [self keepView:self.iPhone onPages:@[@(3.3), @(3), @(3)] atTimes:@[@(2), @(3), @(4)]];
+}
+
+- (void)configureItemsAnimations {
+    
+    
+}
+
+#pragma mark - Page 5 Animations
+- (void)configureBagAnimations {
+    
+}
+
+- (void)configureGlowAnimation {
+    
+}
 
 - (void)configureCircleAnimations {
     // lay out the circle with autolayout (no x-position constraint since we are using the keepView:onPage: method)
