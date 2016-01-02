@@ -44,6 +44,8 @@
 
 
 @property (nonatomic, strong) SavrLabel *page5Label;
+@property (nonatomic, strong) UIImageView *bag;
+@property (nonatomic, strong) UIImageView *glow;
 
 
 
@@ -203,6 +205,12 @@
     self.page5Label = [[SavrLabel alloc]initWithFrame:CGRectMake(0, 0, 300, 75)];
     self.page5Label.text = [NSString stringWithFormat:@"You could buy whatever you\nwant completely guilt free!"];
     [self.contentView addSubview:self.page5Label];
+    
+    self.bag = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bag"]];
+    [self.contentView addSubview:self.bag];
+    
+    self.glow = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"glow"]];
+    [self.contentView addSubview:self.glow];
 }
 
 
@@ -221,6 +229,10 @@
 
     [self configureiPhoneAnimations];
     [self configureItemsAnimations];
+    
+    
+    [self configureBagAnimations];
+    [self configureGlowAnimation];
     
     
     [self animateCurrentFrame];
@@ -661,6 +673,17 @@
 
 #pragma mark - Page 5 Animations
 - (void)configureBagAnimations {
+    [self.bag mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.circle).multipliedBy(0.6);
+        make.height.equalTo(self.circle).multipliedBy(0.5);
+        
+        make.centerY.equalTo(self.contentView).multipliedBy(0.6);
+        
+    }];
+    
+    [self keepView:self.bag onPages:@[@(4), @(4), @(4)] atTimes:@[@(3), @(4), @(5)]];
+
+    
     
 }
 
@@ -669,7 +692,7 @@
 }
 
 
-#pragma mark - other animations 
+#pragma mark - other animations
 - (void)configureCircleAnimations {
     // lay out the circle with autolayout (no x-position constraint since we are using the keepView:onPage: method)
     [self.circle mas_makeConstraints:^(MASConstraintMaker *make) {
