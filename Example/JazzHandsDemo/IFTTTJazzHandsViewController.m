@@ -174,19 +174,6 @@
     self.ticket = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ticket"]];
     [self.contentView addSubview:self.ticket];
     
-
-//    self.planePathView = [UIView new];
-//    [self.contentView addSubview:self.planePathView];
-//    
-//    self.plane = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Plane"]];
-    
-    
-    self.bigCloud = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCloud"]];
-    [self.contentView addSubview:self.bigCloud];
-    
-    self.littleCloud = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LittleCloud"]];
-    [self.contentView addSubview:self.littleCloud];
-    
     self.page3Text = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Page3Text"]];
     //[self.contentView addSubview:self.page3Text];
     
@@ -196,12 +183,6 @@
     self.page4Label = [[SavrLabel alloc]initWithFrame:CGRectMake(0, 0, 300, 75)];
     self.page4Label.text = [NSString stringWithFormat:@"If you skipped out on those\npurchases and recorded them..."];
     [self.contentView addSubview:self.page4Label];
-    
-    self.sun = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Sun"]];
-    [self.contentView addSubview:self.sun];
-    
-    self.iftttCloud = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IFTTTCloud"]];
-    [self.contentView addSubview:self.iftttCloud];
     
     
     
@@ -221,21 +202,18 @@
     [self configureWalletAnimations];
     [self configureMoneyAnimations];
 
-    
-    
+
     [self configureJunkItemsAnimations];
     
+    
 
-    [self configureCloudAnimations];
-    
-    
-    [self configureSunAnimations];
-    
-    
     [self animateCurrentFrame];
     
     
     [self configureCircleAnimations];
+    
+//    [self configureCloudAnimations];
+//    [self configureSunAnimations];
     
 //    [self configureIFTTTPresentsAnimations];
 //    [self configureJazzHandsLabelAnimations];
