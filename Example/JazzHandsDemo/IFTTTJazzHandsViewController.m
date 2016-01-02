@@ -189,6 +189,15 @@
     self.iPhone = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"iPhone"]];
     [self.contentView addSubview:self.iPhone];
     
+    self.itemFries = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"itemFries"]];
+    [self.contentView addSubview:self.itemFries];
+    
+    self.itemPizza = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"itemPizza"]];
+    [self.contentView addSubview:self.itemPizza];
+    
+    self.itemTicket = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"itemTicket"]];
+    [self.contentView addSubview:self.itemTicket];
+    
     
     //PAGE 5
     self.page5Label = [[SavrLabel alloc]initWithFrame:CGRectMake(0, 0, 300, 75)];
@@ -211,6 +220,7 @@
     
 
     [self configureiPhoneAnimations];
+    [self configureItemsAnimations];
     
     
     [self animateCurrentFrame];
@@ -577,10 +587,77 @@
     [self keepView:self.iPhone onPages:@[@(3.3), @(3), @(3)] atTimes:@[@(2), @(3), @(4)]];
 }
 
+
 - (void)configureItemsAnimations {
     
+//ITEM FRIES
+    [self.itemFries mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.circle).multipliedBy(0.412);
+        make.height.equalTo(self.circle).multipliedBy(0.08);
+    }];
     
+    [self keepView:self.itemFries onPages:@[@(3.3), @(3), @(3)] atTimes:@[@(2), @(3), @(4)]];
+    
+    
+    NSLayoutConstraint *itemFriesVerticalConstraint = [NSLayoutConstraint constraintWithItem:self.itemFries
+                                                                               attribute:NSLayoutAttributeCenterY
+                                                                               relatedBy:NSLayoutRelationEqual
+                                                                                  toItem:self.contentView
+                                                                               attribute:NSLayoutAttributeTop
+                                                                              multiplier:1.f constant:0.f];
+    [self.contentView addConstraint:itemFriesVerticalConstraint];
+    
+    IFTTTConstraintMultiplierAnimation *itemFriesVerticalAnimation = [IFTTTConstraintMultiplierAnimation animationWithSuperview:self.contentView constraint:itemFriesVerticalConstraint attribute:IFTTTLayoutAttributeHeight referenceView:self.contentView];
+    [itemFriesVerticalAnimation addKeyframeForTime:2.0 multiplier:1.2f];
+    [itemFriesVerticalAnimation addKeyframeForTime:3.0 multiplier:0.223f];
+    [self.animator addAnimation:itemFriesVerticalAnimation];
+
+    
+    
+//ITEM PIZZA
+    [self.itemPizza mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.circle).multipliedBy(0.412);
+        make.height.equalTo(self.circle).multipliedBy(0.08);
+    }];
+    
+    [self keepView:self.itemPizza onPages:@[@(3.3), @(3), @(3)] atTimes:@[@(2), @(3), @(4)]];
+    
+    NSLayoutConstraint *itemPizzaVerticalConstraint = [NSLayoutConstraint constraintWithItem:self.itemPizza
+                                                                                   attribute:NSLayoutAttributeCenterY
+                                                                                   relatedBy:NSLayoutRelationEqual
+                                                                                      toItem:self.contentView
+                                                                                   attribute:NSLayoutAttributeTop
+                                                                                  multiplier:1.f constant:0.f];
+    [self.contentView addConstraint:itemPizzaVerticalConstraint];
+    
+    IFTTTConstraintMultiplierAnimation *itemPizzaVerticalAnimation = [IFTTTConstraintMultiplierAnimation animationWithSuperview:self.contentView constraint:itemPizzaVerticalConstraint attribute:IFTTTLayoutAttributeHeight referenceView:self.contentView];
+    [itemPizzaVerticalAnimation addKeyframeForTime:2.0 multiplier:1.4f];
+    [itemPizzaVerticalAnimation addKeyframeForTime:3.0 multiplier:0.265f];
+    [self.animator addAnimation:itemPizzaVerticalAnimation];
+    
+    
+//ITEM TICKET
+    [self.itemTicket mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.circle).multipliedBy(0.412);
+        make.height.equalTo(self.circle).multipliedBy(0.08);
+    }];
+    
+    [self keepView:self.itemTicket onPages:@[@(3.3), @(3), @(3)] atTimes:@[@(2), @(3), @(4)]];
+    
+    NSLayoutConstraint *itemTicketVerticalConstraint = [NSLayoutConstraint constraintWithItem:self.itemTicket
+                                                                                   attribute:NSLayoutAttributeCenterY
+                                                                                   relatedBy:NSLayoutRelationEqual
+                                                                                      toItem:self.contentView
+                                                                                   attribute:NSLayoutAttributeTop
+                                                                                  multiplier:1.f constant:0.f];
+    [self.contentView addConstraint:itemTicketVerticalConstraint];
+    
+    IFTTTConstraintMultiplierAnimation *itemTicketVerticalAnimation = [IFTTTConstraintMultiplierAnimation animationWithSuperview:self.contentView constraint:itemTicketVerticalConstraint attribute:IFTTTLayoutAttributeHeight referenceView:self.contentView];
+    [itemTicketVerticalAnimation addKeyframeForTime:2.0 multiplier:1.6f];
+    [itemTicketVerticalAnimation addKeyframeForTime:3.0 multiplier:0.308f];
+    [self.animator addAnimation:itemTicketVerticalAnimation];
 }
+
 
 #pragma mark - Page 5 Animations
 - (void)configureBagAnimations {
@@ -591,6 +668,8 @@
     
 }
 
+
+#pragma mark - other animations 
 - (void)configureCircleAnimations {
     // lay out the circle with autolayout (no x-position constraint since we are using the keepView:onPage: method)
     [self.circle mas_makeConstraints:^(MASConstraintMaker *make) {
