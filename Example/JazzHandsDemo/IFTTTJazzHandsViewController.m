@@ -206,11 +206,11 @@
     self.page5Label.text = [NSString stringWithFormat:@"You could buy whatever you\nwant completely guilt free!"];
     [self.contentView addSubview:self.page5Label];
     
-    self.bag = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bag"]];
-    [self.contentView addSubview:self.bag];
-    
     self.glow = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"glow"]];
     [self.contentView addSubview:self.glow];
+    
+    self.bag = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bag"]];
+    [self.contentView addSubview:self.bag];
 }
 
 
@@ -675,7 +675,7 @@
 - (void)configureBagAnimations {
     [self.bag mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.circle).multipliedBy(0.6);
-        make.height.equalTo(self.circle).multipliedBy(0.5);
+        make.height.equalTo(self.circle).multipliedBy(0.53);
     }];
     
     [self keepView:self.bag onPages:@[@(3),@(3.4), @(4), @(4)] atTimes:@[@(3), @(3.4), @(4), @(5)]];
@@ -691,12 +691,38 @@
     
     IFTTTConstraintMultiplierAnimation *bagVerticalAnimation = [IFTTTConstraintMultiplierAnimation animationWithSuperview:self.contentView constraint:bagVerticalConstraint attribute:IFTTTLayoutAttributeHeight referenceView:self.contentView];
     [bagVerticalAnimation addKeyframeForTime:3.4 multiplier:-0.3f];
-    [bagVerticalAnimation addKeyframeForTime:3.8 multiplier:0.4f];
+    [bagVerticalAnimation addKeyframeForTime:3.8 multiplier:0.45f];
     [self.animator addAnimation:bagVerticalAnimation];
 }
 
+
 - (void)configureGlowAnimation {
+    [self.glow mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.circle).multipliedBy(0.5);
+        make.height.equalTo(self.circle).multipliedBy(0.1575);
+        
+        //make.centerY.equalTo(self.contentView).multipliedBy(0.45);
+    }];
     
+    [self keepView:self.glow onPages:@[@(3.6), @(4), @(4)] atTimes:@[@(3.6), @(4), @(5)]];
+    
+    NSLayoutConstraint *glowVerticalConstraint = [NSLayoutConstraint constraintWithItem:self.glow
+                                                                             attribute:NSLayoutAttributeCenterY
+                                                                             relatedBy:NSLayoutRelationEqual
+                                                                                toItem:self.contentView
+                                                                             attribute:NSLayoutAttributeTop
+                                                                            multiplier:1.f constant:0.f];
+    [self.contentView addConstraint:glowVerticalConstraint];
+    
+    IFTTTConstraintMultiplierAnimation *glowVerticalAnimation = [IFTTTConstraintMultiplierAnimation animationWithSuperview:self.contentView constraint:glowVerticalConstraint attribute:IFTTTLayoutAttributeHeight referenceView:self.contentView];
+    [glowVerticalAnimation addKeyframeForTime:3.8 multiplier:0.38f];
+    [glowVerticalAnimation addKeyframeForTime:4.0 multiplier:0.22f];
+    [self.animator addAnimation:glowVerticalAnimation];
+    
+    IFTTTAlphaAnimation *glowFadeAnimation = [IFTTTAlphaAnimation animationWithView:self.glow];
+    [glowFadeAnimation addKeyframeForTime:3.8 alpha:0.0];
+    [glowFadeAnimation addKeyframeForTime:4.0 alpha:1.0];
+    [self.animator addAnimation:glowFadeAnimation];
 }
 
 
