@@ -87,7 +87,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    [self scaleAirplanePathToSize:self.scrollView.frame.size];
+    //[self scaleAirplanePathToSize:self.scrollView.frame.size];
 }
 
 #pragma mark - iOS8+ Resizing
@@ -154,22 +154,9 @@
     
     self.cash1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cash3"]];
     [self.contentView addSubview:self.cash1];
-
-    
     
     self.wallet = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"wallet"]];
     [self.contentView addSubview:self.wallet];
-    
-
-    
-    //self.musicStand = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MusicStand"]];
-    //[self.contentView addSubview:self.musicStand];
-    
-    //self.musicNotes = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MusicNotes"]];
-    //[self.contentView addSubview:self.musicNotes];
-    
-    //self.page2Text = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Page2Text"]];
-    //[self.contentView addSubview:self.page2Text];
     
     
     
@@ -178,12 +165,21 @@
     self.page3Label.text = [NSString stringWithFormat:@"And you probably make a lot\nof unnecessary purchases."];
     [self.contentView addSubview:self.page3Label];
     
+    self.fries = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"fries"]];
+    [self.contentView addSubview:self.fries];
     
+    self.pizza = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"pizza"]];
+    [self.contentView addSubview:self.pizza];
     
-    self.planePathView = [UIView new];
-    [self.contentView addSubview:self.planePathView];
+    self.ticket = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ticket"]];
+    [self.contentView addSubview:self.ticket];
     
-    self.plane = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Plane"]];
+
+//    self.planePathView = [UIView new];
+//    [self.contentView addSubview:self.planePathView];
+//    
+//    self.plane = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Plane"]];
+    
     
     self.bigCloud = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCloud"]];
     [self.contentView addSubview:self.bigCloud];
@@ -213,8 +209,6 @@
     self.page5Label = [[SavrLabel alloc]initWithFrame:CGRectMake(0, 0, 300, 75)];
     self.page5Label.text = [NSString stringWithFormat:@"You could buy whatever you\nwant completely guilt free!"];
     [self.contentView addSubview:self.page5Label];
-    
-    
 }
 
 
@@ -226,17 +220,18 @@
     
     [self configureWalletAnimations];
     [self configureMoneyAnimations];
-    //[self configureMusicStandAnimations];
+
     
     
-    [self configureAirplaneAnimations];
+    [self configureJunkItemsAnimations];
+    
+
     [self configureCloudAnimations];
     
     
     [self configureSunAnimations];
     
     
-    //[self configurePageTextAnimations];
     [self animateCurrentFrame];
     
     
@@ -244,6 +239,10 @@
     
 //    [self configureIFTTTPresentsAnimations];
 //    [self configureJazzHandsLabelAnimations];
+    
+    //[self configureAirplaneAnimations];
+    //[self configureMusicStandAnimations];
+    //[self configurePageTextAnimations];
 }
 
 
@@ -472,6 +471,57 @@
     [self.animator addAnimation:cash1RotationAnimation];
 
     
+}
+
+- (void)configureJunkItemsAnimations {
+    //FRIES
+    [self.fries mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.width.equalTo(self.scrollView).multipliedBy(0.33);
+        make.height.equalTo(self.scrollView).multipliedBy(0.26);
+        make.centerY.equalTo(self.contentView).multipliedBy(0.53);
+    }];
+    
+    [self keepView:self.fries onPages:@[@(1.65), @(1.8), @(2.5)] atTimes:@[@(1.5), @(2), @(3)]];
+    
+//    IFTTTScaleAnimation *friesScaleAnimation = [IFTTTScaleAnimation animationWithView:self.fries];
+//    [friesScaleAnimation addKeyframeForTime:1.1 scale:0.01];
+//    [friesScaleAnimation addKeyframeForTime:1.7 scale:1.0];
+//    [self.animator addAnimation:friesScaleAnimation];
+    
+    
+    //PIZZA
+    [self.pizza mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.width.equalTo(self.circle).multipliedBy(0.4);
+        make.height.equalTo(self.circle).multipliedBy(0.4);
+        make.centerY.equalTo(self.contentView).multipliedBy(0.8);
+    }];
+    
+    [self keepView:self.pizza onPages:@[@(1.45), @(2.15), @(2.5)] atTimes:@[@(1.3), @(2), @(3)]];
+
+    IFTTTScaleAnimation *pizzaScaleAnimation = [IFTTTScaleAnimation animationWithView:self.pizza];
+    [pizzaScaleAnimation addKeyframeForTime:1.5 scale:0.5];
+    [pizzaScaleAnimation addKeyframeForTime:1.9 scale:1.0];
+    [self.animator addAnimation:pizzaScaleAnimation];
+    
+    IFTTTAlphaAnimation *pizzaFadeAnimation = [IFTTTAlphaAnimation animationWithView:self.pizza];
+    [pizzaFadeAnimation addKeyframeForTime:1.0 alpha:0.0];
+    [pizzaFadeAnimation addKeyframeForTime:1.5 alpha:0.0];
+    [pizzaFadeAnimation addKeyframeForTime:2.0 alpha:1.0];
+    [self.animator addAnimation:pizzaFadeAnimation];
+    
+    
+    
+    //TICKET
+    [self.ticket mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.width.equalTo(self.circle).multipliedBy(0.42);
+        make.height.equalTo(self.circle).multipliedBy(0.323);
+        make.centerY.equalTo(self.contentView).multipliedBy(1.2);
+    }];
+    
+    [self keepView:self.ticket onPages:@[@(1.9), @(2.5)] atTimes:@[@(1), @(2)]];
 }
 
 
@@ -725,6 +775,8 @@
 
 
 //AIRPLANE ANIMATON
+
+/*
 - (void)configureAirplaneAnimations {
     // Set up the view that contains the airplane view and its dashed line path view
     self.planePathLayer = [self airplanePathLayer];
@@ -765,8 +817,7 @@
     [self.animator addAnimation:planeAlphaAnimation];
 }
 
-- (CGPathRef)airplanePath
-{
+- (CGPathRef)airplanePath {
     // Create a bezier path for the airplane to fly along
     UIBezierPath *airplanePath = [UIBezierPath bezierPath];
     [airplanePath moveToPoint: CGPointMake(120, 20)];
@@ -777,8 +828,7 @@
     return airplanePath.CGPath;
 }
 
-- (CAShapeLayer *)airplanePathLayer
-{
+- (CAShapeLayer *)airplanePathLayer {
     // Create a shape layer to draw the airplane's path
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = [self airplanePath];
@@ -792,8 +842,7 @@
     return shapeLayer;
 }
 
-- (void)scaleAirplanePathToSize:(CGSize)pageSize
-{
+- (void)scaleAirplanePathToSize:(CGSize)pageSize {
     // Scale the airplane path to the given page size
     CGSize scaleSize = CGSizeMake(pageSize.width / 375.f, pageSize.height / 667.f);
     
@@ -805,5 +854,6 @@
     self.airplaneFlyingAnimation.path = scaledPath;
     CGPathRelease(scaledPath);
 }
+ */
 
 @end
