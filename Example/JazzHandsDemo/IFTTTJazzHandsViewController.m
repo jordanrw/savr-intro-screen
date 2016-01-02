@@ -490,7 +490,7 @@
 //    [self.animator addAnimation:friesScaleAnimation];
     
     
-    //PIZZA
+//PIZZA
     [self.pizza mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.width.equalTo(self.circle).multipliedBy(0.4);
@@ -498,7 +498,7 @@
         make.centerY.equalTo(self.contentView).multipliedBy(0.8);
     }];
     
-    [self keepView:self.pizza onPages:@[@(1.45), @(2.15), @(2.5)] atTimes:@[@(1.3), @(2), @(3)]];
+    [self keepView:self.pizza onPages:@[@(1.45), @(2.15), @(4)] atTimes:@[@(1.3), @(2), @(3)]];
 
     IFTTTScaleAnimation *pizzaScaleAnimation = [IFTTTScaleAnimation animationWithView:self.pizza];
     [pizzaScaleAnimation addKeyframeForTime:1.5 scale:0.5];
@@ -511,9 +511,22 @@
     [pizzaFadeAnimation addKeyframeForTime:2.0 alpha:1.0];
     [self.animator addAnimation:pizzaFadeAnimation];
     
+    NSLayoutConstraint *pizzaVerticalConstraint = [NSLayoutConstraint constraintWithItem:self.pizza
+                                                                              attribute:NSLayoutAttributeCenterY
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:self.contentView
+                                                                              attribute:NSLayoutAttributeTop
+                                                                             multiplier:1.f constant:0.f];
+    [self.contentView addConstraint:pizzaVerticalConstraint];
     
     
-    //TICKET
+    IFTTTConstraintMultiplierAnimation *pizzaVerticalAnimation = [IFTTTConstraintMultiplierAnimation animationWithSuperview:self.contentView constraint:pizzaVerticalConstraint attribute:IFTTTLayoutAttributeHeight referenceView:self.contentView];
+    [pizzaVerticalAnimation addKeyframeForTime:2.0 multiplier:0.33f];
+    [pizzaVerticalAnimation addKeyframeForTime:3.0 multiplier:-0.3f];
+    [self.animator addAnimation:pizzaVerticalAnimation];
+    
+    
+//TICKET
     [self.ticket mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.width.equalTo(self.circle).multipliedBy(0.42);
@@ -753,6 +766,8 @@
 
 
 - (void)configureSunAnimations {
+    
+    
     // Move the sun from the right side of page 2.5 to the left side of page 3
     [self keepView:self.sun onPages:@[@(2.8), @(2.6)] atTimes:@[@(2.5), @(3)]];
     
