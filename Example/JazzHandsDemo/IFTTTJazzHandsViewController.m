@@ -474,41 +474,61 @@
 }
 
 - (void)configureJunkItemsAnimations {
-    //FRIES
+    
+    
+//FRIES
     [self.fries mas_makeConstraints:^(MASConstraintMaker *make) {
-        
         make.width.equalTo(self.scrollView).multipliedBy(0.33);
         make.height.equalTo(self.scrollView).multipliedBy(0.26);
-        make.centerY.equalTo(self.contentView).multipliedBy(0.53);
+        //make.centerY.equalTo(self.contentView).multipliedBy(0.53);
     }];
     
-    [self keepView:self.fries onPages:@[@(1.65), @(1.8), @(2.5)] atTimes:@[@(1.5), @(2), @(3)]];
+    [self keepView:self.fries onPages:@[@(1.1), @(1.8), @(2)] atTimes:@[@(1.3), @(2), @(3)]];
     
-//    IFTTTScaleAnimation *friesScaleAnimation = [IFTTTScaleAnimation animationWithView:self.fries];
-//    [friesScaleAnimation addKeyframeForTime:1.1 scale:0.01];
-//    [friesScaleAnimation addKeyframeForTime:1.7 scale:1.0];
-//    [self.animator addAnimation:friesScaleAnimation];
+    IFTTTScaleAnimation *friesScaleAnimation = [IFTTTScaleAnimation animationWithView:self.fries];
+    [friesScaleAnimation addKeyframeForTime:1.7 scale:0.5];
+    [friesScaleAnimation addKeyframeForTime:2.0 scale:1.0];
+    [self.animator addAnimation:friesScaleAnimation];
+    
+    IFTTTAlphaAnimation *friesFadeAnimation = [IFTTTAlphaAnimation animationWithView:self.fries];
+    [friesFadeAnimation addKeyframeForTime:1.0 alpha:0.0];
+    [friesFadeAnimation addKeyframeForTime:1.7 alpha:0.0];
+    [friesFadeAnimation addKeyframeForTime:2.0 alpha:1.0];
+    [self.animator addAnimation:friesFadeAnimation];
+    
+    NSLayoutConstraint *friesVerticalConstraint = [NSLayoutConstraint constraintWithItem:self.fries
+                                                                                attribute:NSLayoutAttributeCenterY
+                                                                                relatedBy:NSLayoutRelationEqual
+                                                                                   toItem:self.contentView
+                                                                                attribute:NSLayoutAttributeTop
+                                                                               multiplier:1.f constant:0.f];
+    [self.contentView addConstraint:friesVerticalConstraint];
+    
+    IFTTTConstraintMultiplierAnimation *friesVerticalAnimation = [IFTTTConstraintMultiplierAnimation animationWithSuperview:self.contentView constraint:friesVerticalConstraint attribute:IFTTTLayoutAttributeHeight referenceView:self.contentView];
+    [friesVerticalAnimation addKeyframeForTime:2.0 multiplier:0.29f];
+    [friesVerticalAnimation addKeyframeForTime:3.0 multiplier:-0.3f];
+    [self.animator addAnimation:friesVerticalAnimation];
+    
     
     
 //PIZZA
     [self.pizza mas_makeConstraints:^(MASConstraintMaker *make) {
-        
         make.width.equalTo(self.circle).multipliedBy(0.4);
         make.height.equalTo(self.circle).multipliedBy(0.4);
-        make.centerY.equalTo(self.contentView).multipliedBy(0.8);
+        //make.centerY.equalTo(self.contentView).multipliedBy(0.8);
     }];
     
     [self keepView:self.pizza onPages:@[@(1.45), @(2.15), @(4)] atTimes:@[@(1.3), @(2), @(3)]];
 
     IFTTTScaleAnimation *pizzaScaleAnimation = [IFTTTScaleAnimation animationWithView:self.pizza];
     [pizzaScaleAnimation addKeyframeForTime:1.5 scale:0.5];
-    [pizzaScaleAnimation addKeyframeForTime:1.9 scale:1.0];
+    [pizzaScaleAnimation addKeyframeForTime:1.8 scale:1.0];
     [self.animator addAnimation:pizzaScaleAnimation];
     
     IFTTTAlphaAnimation *pizzaFadeAnimation = [IFTTTAlphaAnimation animationWithView:self.pizza];
     [pizzaFadeAnimation addKeyframeForTime:1.0 alpha:0.0];
     [pizzaFadeAnimation addKeyframeForTime:1.5 alpha:0.0];
-    [pizzaFadeAnimation addKeyframeForTime:2.0 alpha:1.0];
+    [pizzaFadeAnimation addKeyframeForTime:1.8 alpha:1.0];
     [self.animator addAnimation:pizzaFadeAnimation];
     
     NSLayoutConstraint *pizzaVerticalConstraint = [NSLayoutConstraint constraintWithItem:self.pizza
@@ -519,22 +539,46 @@
                                                                              multiplier:1.f constant:0.f];
     [self.contentView addConstraint:pizzaVerticalConstraint];
     
-    
     IFTTTConstraintMultiplierAnimation *pizzaVerticalAnimation = [IFTTTConstraintMultiplierAnimation animationWithSuperview:self.contentView constraint:pizzaVerticalConstraint attribute:IFTTTLayoutAttributeHeight referenceView:self.contentView];
-    [pizzaVerticalAnimation addKeyframeForTime:2.0 multiplier:0.33f];
+    [pizzaVerticalAnimation addKeyframeForTime:2.0 multiplier:0.4f];
     [pizzaVerticalAnimation addKeyframeForTime:3.0 multiplier:-0.3f];
     [self.animator addAnimation:pizzaVerticalAnimation];
     
     
+    
+    
 //TICKET
     [self.ticket mas_makeConstraints:^(MASConstraintMaker *make) {
-        
         make.width.equalTo(self.circle).multipliedBy(0.42);
         make.height.equalTo(self.circle).multipliedBy(0.323);
-        make.centerY.equalTo(self.contentView).multipliedBy(1.2);
+        //make.centerY.equalTo(self.contentView).multipliedBy(1.2);
     }];
     
-    [self keepView:self.ticket onPages:@[@(1.9), @(2.5)] atTimes:@[@(1), @(2)]];
+    [self keepView:self.ticket onPages:@[@(1.2), @(1.9), @(4)] atTimes:@[@(1.3), @(2), @(3)]];
+    
+    IFTTTScaleAnimation *ticketScaleAnimation = [IFTTTScaleAnimation animationWithView:self.ticket];
+    [ticketScaleAnimation addKeyframeForTime:1.6 scale:0.5];
+    [ticketScaleAnimation addKeyframeForTime:1.9 scale:1.0];
+    [self.animator addAnimation:ticketScaleAnimation];
+    
+    IFTTTAlphaAnimation *ticketFadeAnimation = [IFTTTAlphaAnimation animationWithView:self.ticket];
+    [ticketFadeAnimation addKeyframeForTime:1.0 alpha:0.0];
+    [ticketFadeAnimation addKeyframeForTime:1.6 alpha:0.0];
+    [ticketFadeAnimation addKeyframeForTime:1.9 alpha:1.0];
+    [self.animator addAnimation:ticketFadeAnimation];
+    
+    NSLayoutConstraint *ticketVerticalConstraint = [NSLayoutConstraint constraintWithItem:self.ticket
+                                                                               attribute:NSLayoutAttributeCenterY
+                                                                               relatedBy:NSLayoutRelationEqual
+                                                                                  toItem:self.contentView
+                                                                               attribute:NSLayoutAttributeTop
+                                                                              multiplier:1.f constant:0.f];
+    [self.contentView addConstraint:ticketVerticalConstraint];
+    
+    IFTTTConstraintMultiplierAnimation *ticketVerticalAnimation = [IFTTTConstraintMultiplierAnimation animationWithSuperview:self.contentView constraint:ticketVerticalConstraint attribute:IFTTTLayoutAttributeHeight referenceView:self.contentView];
+    [ticketVerticalAnimation addKeyframeForTime:2.0 multiplier:0.58f];
+    [ticketVerticalAnimation addKeyframeForTime:3.0 multiplier:1.6f];
+    [self.animator addAnimation:ticketVerticalAnimation];
 }
 
 
