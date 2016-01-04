@@ -264,7 +264,7 @@
     [self.page5Label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView).multipliedBy(1.75);
     }];
-    [self keepView:self.page5Label onPages:@[@(4)]];
+    [self keepView:self.page5Label onPages:@[@(4), @(5)] atTimes:@[@(4), @(5)]];
 
 }
 
@@ -628,7 +628,7 @@
         make.height.equalTo(self.circle).multipliedBy(0.53);
     }];
     
-    [self keepView:self.bag onPages:@[@(3),@(3.4), @(4), @(4)] atTimes:@[@(3), @(3.4), @(4), @(5)]];
+    [self keepView:self.bag onPages:@[@(3),@(3.4), @(4), @(5)] atTimes:@[@(3), @(3.4), @(4), @(5)]];
 
     
     NSLayoutConstraint *bagVerticalConstraint = [NSLayoutConstraint constraintWithItem:self.bag
@@ -654,7 +654,7 @@
         //make.centerY.equalTo(self.contentView).multipliedBy(0.45);
     }];
     
-    [self keepView:self.glow onPages:@[@(3.6), @(4), @(4)] atTimes:@[@(3.6), @(4), @(5)]];
+    [self keepView:self.glow onPages:@[@(3.6), @(4), @(5)] atTimes:@[@(3.6), @(4), @(5)]];
     
     NSLayoutConstraint *glowVerticalConstraint = [NSLayoutConstraint constraintWithItem:self.glow
                                                                              attribute:NSLayoutAttributeCenterY
@@ -700,7 +700,7 @@
         make.centerY.equalTo(self.contentView).multipliedBy(1.43);
     }];
     
-    [self keepView:self.startButton onPages:@[@(3), @(4), @(4)] atTimes:@[@(3), @(4), @(5)]];
+    [self keepView:self.startButton onPages:@[@(3), @(4), @(5)] atTimes:@[@(3), @(4), @(5)]];
     
     IFTTTAlphaAnimation *buttonFadeAnimation = [IFTTTAlphaAnimation animationWithView:self.startButton];
     [buttonFadeAnimation addKeyframeForTime:3.8 alpha:0.0];
