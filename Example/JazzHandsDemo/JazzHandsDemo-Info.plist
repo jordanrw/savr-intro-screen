@@ -41,6 +41,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>OldStandard-Italic.ttf</string>
+		<string>OpenSans-Semibold.ttf</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

@@ -21,6 +21,7 @@
 		1767ADE51C322897002D12AB /* SavrLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767ADE41C322897002D12AB /* SavrLabel.m */; };
 		17980E311C33BFCE009D6C29 /* junk.c in Sources */ = {isa = PBXBuildFile; fileRef = 17980E301C33BFCE009D6C29 /* junk.c */; };
 		17AEB9541BD4924F00EAFF9C /* OldStandard-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17AEB9531BD4924F00EAFF9C /* OldStandard-Italic.ttf */; };
+		17EA75611C3A1F0C0048580A /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17EA75601C3A1F0C0048580A /* OpenSans-Semibold.ttf */; };
 		445B9E227A691EC342AEEDE2 /* libPods-JazzHandsDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1EAF4CD1F4A61D2DBBB695 /* libPods-JazzHandsDemo.a */; };
 		8A7331363E195DEE4B479A7E /* libPods-JazzHandsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9147A8A9689CEBCB4A91E3C /* libPods-JazzHandsTests.a */; };
 		E973270D1A58922500AD6E55 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E97327091A58922500AD6E55 /* InfoPlist.strings */; };
@@ -64,6 +65,7 @@
 		1767ADE41C322897002D12AB /* SavrLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavrLabel.m; sourceTree = "<group>"; };
 		17980E301C33BFCE009D6C29 /* junk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = junk.c; sourceTree = "<group>"; };
 		17AEB9531BD4924F00EAFF9C /* OldStandard-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OldStandard-Italic.ttf"; sourceTree = "<group>"; };
+		17EA75601C3A1F0C0048580A /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		45B9FCE6E3104AA817948180 /* Pods-JazzHandsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JazzHandsDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JazzHandsDemo/Pods-JazzHandsDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		6D050C2F6889563E59C28169 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		77552966B8356BBAE72A4F20 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				03063ED417F5FAAD007D7A97 /* JazzHandsDemo */,
 				17AEB9531BD4924F00EAFF9C /* OldStandard-Italic.ttf */,
+				17EA75601C3A1F0C0048580A /* OpenSans-Semibold.ttf */,
 				E97327081A58922500AD6E55 /* JazzHandsTests */,
 				03063ECD17F5FAAD007D7A97 /* Frameworks */,
 				03063ECC17F5FAAD007D7A97 /* Products */,
@@ -290,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17EA75611C3A1F0C0048580A /* OpenSans-Semibold.ttf in Resources */,
 				17AEB9541BD4924F00EAFF9C /* OldStandard-Italic.ttf in Resources */,
 				FA486DBC1B3CBA54003A14B5 /* LaunchScreen.storyboard in Resources */,
 				03063ED917F5FAAD007D7A97 /* InfoPlist.strings in Resources */,
